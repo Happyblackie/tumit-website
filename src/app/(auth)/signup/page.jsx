@@ -48,7 +48,7 @@ export default function Signup() {
                 <input type="text"  name="phone" className="p-2 border border-gray-400 rounded bg-white" defaultValue={state?.phone} />
                 {state?.errors?.phone && (
                   <div className="error">
-                    <p>Password must:</p>
+                    <p>Phone must:</p>
                     <ul className="list-disc list-inside ml-4">
                       {state.errors.phone.map((err) => (
                         <li key={err}>{err}</li>

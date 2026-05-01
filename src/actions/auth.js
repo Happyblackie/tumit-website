@@ -1,15 +1,26 @@
 'use server'
+import { RegisterFormSchema } from "@/lib/rules";
+import { Noto_Sans_Phoenician } from "next/font/google";
 
 export async function signup(state, formData){
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-    
-    const username = formData.get("username");
-    const email = formData.get("email");
-    const phone = formData.get("phone");
-    const password = formData.get("password");
+    //await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    console.log(username);
-    console.log(email);
-    console.log(phone);
-    console.log(password);
+   const validatedFields = RegisterFormSchema.safeParse({
+    username: formData.get("username"),
+    email: formData.get("email"),
+    phone: formData.get("phone"),
+    password: formData.get("password"),
+    confirmPassword: formData.get("confirmPassword"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      username: formData.get("username"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+    };
+  }
+
+  console.log(validatedFields);
 }

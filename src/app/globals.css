@@ -31,3 +31,6 @@
     font-family: var(--font-roboto);
   }
 }
+.error{
+  color:red;
+}

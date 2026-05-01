@@ -29,27 +29,56 @@ export default function Signup() {
               {/* Inputs */}
               <div className="flex flex-col gap-2 mb-5">
                 <label className="text-sm font-bold" htmlFor="username">Enter username</label>
-                <input type="text" name="username" className="p-2 border border-gray-400 rounded bg-white" />
+                <input type="text" name="username" className="p-2 border border-gray-400 rounded bg-white" defaultValue={state?.username} />
+                {state?.errors?.username && (
+                  <p className="error">{state.errors.username}</p>
+                )}
               </div>
 
               <div className="flex flex-col gap-2 mb-5">
                 <label className="text-sm font-bold" htmlFor="email">Enter email</label>
-                <input type="text" name="email" className="p-2 border border-gray-400 rounded bg-white" />
+                <input type="text" name="email" className="p-2 border border-gray-400 rounded bg-white" defaultValue={state?.email} />
+                {state?.errors?.email && (
+                  <p className="error">{state.errors.email}</p>
+                )}
               </div>
 
               <div className="flex flex-col gap-2 mb-5">
                 <label className="text-sm font-bold" htmlFor="phone">Enter phone</label>
-                <input type="text"  name="phone" className="p-2 border border-gray-400 rounded bg-white" />
+                <input type="text"  name="phone" className="p-2 border border-gray-400 rounded bg-white" defaultValue={state?.phone} />
+                {state?.errors?.phone && (
+                  <div className="error">
+                    <p>Password must:</p>
+                    <ul className="list-disc list-inside ml-4">
+                      {state.errors.phone.map((err) => (
+                        <li key={err}>{err}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-col gap-2 mb-5">
                 <label className="text-sm font-bold" htmlFor="password">Enter password</label>
-                <input type="password" name="password" className="p-2 border border-gray-400 rounded bg-white" />
+                <input type="password" name="password" className="p-2 border border-gray-400 rounded bg-white"/>
+                {state?.errors?.password && (
+                  <div className="error">
+                    <p>Password must:</p>
+                    <ul className="list-disc list-inside ml-4">
+                      {state.errors.password.map((err) => (
+                        <li key={err}>{err}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-col gap-2 mb-5">
                 <label className="text-sm font-bold" htmlFor="confirmPassword">Confirm password</label>
                 <input type="password" name="confirmPassword" className="p-2 border border-gray-400 rounded bg-white" />
+                 {state?.errors?.confirmPassword && (
+                  <p className="error">{state.errors.confirmPassword}</p>
+                )}
               </div>
 
             

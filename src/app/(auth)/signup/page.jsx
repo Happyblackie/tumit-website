@@ -1,6 +1,5 @@
 'use client'
 import { signup } from "@/actions/auth";
-import Link from "next/link";
 import { useActionState } from "react";
 
 
@@ -108,14 +107,19 @@ export default function Signup() {
             </div>
             
           
-            <div className="flex justify-center mt-2">
+            <div className="flex flex-col items-center justify-center mt-2 gap-4">
                 <button  disabled={isPending}                   
                     className="flex items-center justify-center gap-2 h-10 px-5 bg-gray-200 text-gray-800 rounded-full 
-                    hover:bg-gray-300 hover:text-black transition duration-200 border"
+                    hover:bg-gray-300 hover:text-black transition duration-200 border cursor-pointer"
                 >                  
                     <i className="bi bi-box-arrow-in-right"></i>
-                    <span className="text-sm"> {isPending ? "Loading..." : "Sign up"}</span>
+                    <span className="text-sm font-bold"> {isPending ? "Loading..." : "Sign up"}</span>
                 </button>
+
+                {/* Terms and Conditions Statement */}
+                <p className="text-blue-600 text-xs text-center">
+                  By signing up you agree with our terms and conditions.
+                </p>
             </div>
           </form>
         </div>

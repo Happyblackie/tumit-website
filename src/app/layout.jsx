@@ -1,6 +1,7 @@
 import { Playfair_Display, Roboto } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -24,53 +25,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       < body className={`bg-skew min-h-screen flex flex-col ${playfair.variable} ${roboto.variable}`}>
+      
         <header className="p-4 pt-8">
-          <div className="w-full max-w-5xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between w-full items-start md:items-center gap-4">
-
-              <Link className="font-bold text-2xl font-playfair" href={'/'}>
-                Tumit ///
-              </Link>
-
-              <nav className="flex items-center gap-8 text-sm">
-                
-                <Link
-                    href={'/signup'}
-                    className="flex items-center justify-center gap-2 h-10 px-5 bg-gray-200 text-gray-800 rounded-full 
-                     hover:bg-gray-300 hover:text-black transition duration-200 border"
-                >
-                    <i className="bi bi-box-arrow-in-right"></i>
-                    <span className="text-sm">Sign up</span>
-                </Link>
-
-                <Link href={'/dashboard'} className="hover:underline">
-                  Dashboard
-                </Link>
-
-                <Link href={'/about'} className="hover:underline">
-                  About us
-                </Link>
-                
-              </nav>
-
-            </div>
-          </div>
+          <Navigation/>
         </header>
 
         <main>{children}</main>
 
-        <footer className="p-4 pb-8">
-          <div className="w-full max-w-5xl mx-auto">
-              <div className="flex gap-4 justify-between items-center">
-                  <small>Copyright © 2025 • Distributed by <a href="https://tumit.co" className="text-green-700">Tumit</a></small>
-                  <div className="flex items-center gap-4">
-                      <a href="#"><i className="bi bi-twitter-x"></i></a>
-                      <a href="#"><i className="bi bi-github"></i></a>
-                      <a href="#"><i className="bi bi-slack"></i></a>
-                  </div>
-              </div>
-          </div>
-        </footer>
+        <Footer/>
 
       </body>
     </html>

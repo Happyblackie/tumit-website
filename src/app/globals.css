@@ -34,3 +34,6 @@
 .error{
   color:red;
 }
+.object-contain{
+  width: auto;
+}

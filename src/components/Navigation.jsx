@@ -2,6 +2,7 @@ import Link from 'next/link';
 import NavLink from './NavLink';
 import Image from 'next/image';
 import getAuthUser from '@/lib/getAuthUser';
+import { logout } from '@/actions/auth';
 
 export default async function Navbar() {
 
@@ -27,9 +28,18 @@ export default async function Navbar() {
         <nav className="flex items-center gap-8 text-sm">
          
             {authUser ? (
-              <div className="">
+              <div className="flex items-center gap-4">
                 <NavLink label="Dashboard" href="/dashboard"/>
+                <form action={logout}>
+                  <i className="bi bi-box-arrow-in-right"></i>
+                  <button className=" py-2bg-gray-200 text-gray-800 rounded-full 
+                     hover:text-black transition duration-200  cursor-pointer">
+                    Logout
+                  </button> 
+                </form>
               </div>
+
+             
             )
             :(
               <>

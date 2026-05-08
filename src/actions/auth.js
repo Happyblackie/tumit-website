@@ -4,6 +4,7 @@ import { getCollection } from "@/lib/db";
 import { RegisterFormSchema, SigninFormSchema } from "@/lib/rules";
 import { redirect } from "next/navigation";
 import { createSession } from "@/lib/sessions";
+import { cookies } from "next/headers";
 
 //signup js
 export async function signup(state, formData){
@@ -100,4 +101,11 @@ export async function signin(state, formData){
   //Redirect
   redirect ('/dashboard');
 
+}
+
+//logout js
+export async function logout(){
+  const cookieStore = await cookies();
+  cookieStore.delete("session");
+  redirect('/');
 }

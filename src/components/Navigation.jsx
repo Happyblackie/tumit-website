@@ -1,8 +1,10 @@
-import { logout } from '@/actions/auth';
+
 import getAuthUser from '@/lib/getAuthUser';
 import Image from 'next/image';
 import Link from 'next/link';
+import MobileMenu from './MobileMenu';
 import NavLink from './NavLink';
+import UserMenu from './UserMenu';
 
 export default async function Navbar() {
 
@@ -20,24 +22,22 @@ export default async function Navbar() {
               alt="Logo" 
               width={65} // Reduced size so it doesn't push the nav
               height={65}       
-              className="w-10 md:w-14 lg:w-16 h-auto object-contain"
+              className="w-8 sm:w-10 md:w-12 lg:w-16 h-auto object-contain"
               style={{ height: 'auto' }}
               priority
             />
           </Link>
 
-          <nav className="flex items-center gap-8 text-sm">
+          <nav className="hidden md:flex items-center gap-8 text-sm">
           
               {authUser ? (
-                <div className="flex items-center gap-4">
+                <div className="flex items-center">
                   <NavLink label="Dashboard" href="/dashboard"/>
-                  <form action={logout}>
-                    <i className="bi bi-box-arrow-in-right"></i>
-                    <button className=" py-2bg-gray-200 text-gray-800 rounded-full 
-                      hover:text-black transition duration-200  cursor-pointer">
-                      Logout
-                    </button> 
-                  </form>
+                  
+                    <div className="ml-12 lg:ml-20">
+                      <UserMenu />
+                    </div>
+                    
                 </div>
 
               
@@ -58,6 +58,10 @@ export default async function Navbar() {
             
                   
           </nav>
+
+          <div className="md:hidden">
+            <MobileMenu authUser={authUser} />
+          </div>
 
         </div>
       </div>
